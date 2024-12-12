@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head th:replace="~{page-templates :: head}"></head>
+<body>
+<header th:replace="~{page-templates :: header}"></header>
+
+<div class="container">
+    <h1>Detalle de la Venta #[[${venta.id}]]</h1>
+    <p>Fecha: <span th:text="${#dates.format(venta.fecha, 'dd/MM/yyyy')}"></span></p>
+    <p>Total: $<span th:text="${venta.total}"></span></p>
+
+    <h2>Productos Comprados</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio Unitario</th>
+            <th>Subtotal</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${items}">
+            <td th:text="${item.producto.nombre}">Nombre Producto</td>
+            <td th:text="${item.cantidad}">1</td>
+            <td th:text="${item.precioUnitario}">0.00</td>
+            <td th:text="${item.subtotal}">0.00</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer th:replace="~{page-templates :: footer}"></footer>
+</body>
+</html>

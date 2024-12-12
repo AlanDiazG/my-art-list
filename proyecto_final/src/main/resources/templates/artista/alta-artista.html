@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="es">
+<head th:replace="~{page-templates :: head}"></head>
+
+<body>
+<header th:replace="~{page-templates :: header}"></header>
+<main class="container text-center opacity-7 shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+    <h1 class="card-header text-dark"><strong><p th:text="${contenido}"></p></strong></h1>
+    <div class="card-body">
+        <form th:action="@{/artista/salvar-artista}" th:object="${artista}" method="post">
+            <div th:if="${#fields.hasErrors('*')}" class='alert alert-danger' role="alert">
+                Verifique los siguientes errores
+                <ul>
+                    <li th:each="err : ${#fields.errors('*')}" th:text="${err}"/>
+                </ul>
+            </div>
+            <div class="row gx-5">
+                <div class="col-mf-5">
+                    <div class="form-group">
+                        <label class="text-dark" for="nombre">Nombre del Artista </label>
+                        <input type="text" class="form-control" id="nombre" name="nombre"
+                               placeholder="Nombre del Artista" required
+                               th:value="${artista.nombre}">
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label class="text-dark"  for="nacionalidad">Nacionalidad:</label>
+                        <input type="text" class="form-control" id="nacionalidad" name="nacionalidad"
+                               placeholder="Nacionalidad" required="required"
+                               th:value="${artista.nacionalidad}">
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <br/>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+
+            </div>
+            <input type="hidden" name="id" th:value="${artista.id}"/>
+        </form>
+    </div>
+</main>
+<footer th:replace="~{page-templates :: footer}"></footer>
+</body>
+</html>

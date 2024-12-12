@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head th:replace="~{page-templates :: head}"></head>
+<body>
+<header th:replace="~{page-templates :: header}"></header>
+
+<div class="container">
+    <h1>Proceder al Pago</h1>
+    <p>Total a pagar: $<span th:text="${total}">0.00</span></p>
+
+    <div th:if="${error}">
+        <div class="alert alert-danger" th:text="${error}"></div>
+    </div>
+
+    <form method="post" th:action="@{/procesarPago}">
+        <div class="form-group">
+            <label for="tarjetaId">Selecciona una tarjeta:</label>
+            <select class="form-control" id="tarjetaId" name="tarjetaId">
+                <option th:each="tarjeta : ${tarjetas}" th:value="${tarjeta.id}"
+                        th:text="${tarjeta.tipoTarjeta} + ' - ' + ${tarjeta.numeroTarjeta}"></option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Pagar</button>
+    </form>
+</div>
+
+<footer th:replace="~{page-templates :: footer}"></footer>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="es">
+<head th:replace="~{page-templates :: head}"></head>
+
+<body>
+<header th:replace="~{page-templates :: header}"></header>
+<main class="container text-center opacity-7 shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+    <h1 class="text-dark" th:text="${contenido}"></h1>
+    <table th:if="${!pintura.isEmpty()}" class="table table-striped table-hover table-sm">
+        <thead class="table-dark table-bordered">
+        <tr>
+            <th scope="col"> Identificador</th>
+            <th scope="col"> Titulo De La Obra</th>
+            <th scope="col"> Año De Creacion</th>
+            <th scope="col"> Tecnica</th>
+            <th scope="col"> Detalles</th>
+            <th scope="col"> Artista</th>
+            <th scope="col"> Operaciones</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pint: ${pintura}">
+            <td th:text="${pint.id}"></td>
+            <td th:text="${pint.tituloObra}"></td>
+            <td th:text="${pint.anioCreacion}"></td>
+            <td th:text="${pint.tecnica}"></td>
+            <td th:text="${pint.detalles}"></td>
+            <td th:text="${pint.artista.nombre}"></td>
+            <td>
+                <a th:href="@{/pintura/modificar-pintura/{id} (id=${pint.id})}"
+                   class="btn btn-success">Modificar <i class="fas fa-pen-nib"
+                                                        aria-hidden="true"></i> </a>
+                <a th:href="@{/pintura/eliminar-pintura/{id} (id=${pint.id})}"
+                   class="btn btn-danger">Eliminar <i class="fas fa-trash-alt"
+                                                      aria-hidden="true"></i> </a>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <nav th:replace="~{pag-nav::paginador}"></nav>
+</main>
+<footer th:replace="~{page-templates :: footer}"></footer>
+</body>
+</html>

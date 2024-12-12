@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="es">
+<head th:replace="~{page-templates :: head}"></head>
+
+<body>
+<header th:replace="~{page-templates :: header}"></header>
+<main class="container text-center opacity-7 shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+    <h1 class="card-header text-dark"><strong><p th:text="${contenido}"></p></strong></h1>
+    <div class="card-body">
+        <form th:action="@{/pintura/salvar-pintura}" th:object="${pintura}" method="post">
+            <div th:if="${#fields.hasErrors('*')}" class='alert alert-danger' role="alert">
+                Verifique los siguientes errores
+                <ul>
+                    <li th:each="err : ${#fields.errors('*')}" th:text="${err}"/>
+                </ul>
+            </div>
+            <div class="row gx-5">
+                <div class="col-mf-5">
+                    <div class="form-group">
+                        <label class="text-dark"  for="tituloObra">Titulo De La Obra </label>
+                        <input type="text" class="form-control" id="tituloObra" name="tituloObra"
+                               placeholder="Titulo De La Obra " required
+                               th:value="${pintura.tituloObra}">
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label class="text-dark"  for="anioCreacion">Año De Creacion:</label>
+                        <input type="date" class="form-control" id="anioCreacion" name="anioCreacion"
+                               placeholder="Año De Creacion:" required="required"
+                               th:value="${pintura.anioCreacion}">
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label class="text-dark"  for="tecnica">Tecnica:</label>
+                        <input type="text" class="form-control" id="tecnica" name="tecnica"
+                               placeholder="Tecnica" required="required"
+                               th:value="${pintura.tecnica}">
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label class="text-dark"  for="detalles">Detalles:</label>
+                        <input type="text" class="form-control" id="detalles" name="detalles"
+                               placeholder="Detalles" required="required"
+                               th:value="${pintura.detalles}">
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label class="text-dark"  for="artista">Id Del Artista:</label>
+                        <input type="number" class="form-control" id="artista" name="artista"
+                               placeholder="1-7" required="required"
+                               th:value="${pintura.artista}">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <br/>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+
+            </div>
+            <input type="hidden" name="id" th:value="${pintura.id}"/>
+        </form>
+    </div>
+</main>
+<footer th:replace="~{page-templates :: footer}"></footer>
+</body>
+</html>

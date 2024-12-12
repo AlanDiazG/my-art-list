@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org" lang="es">
+<head>
+	<meta http-equiv="refresh" content="3;URL=http://localhost:8090/inicio">
+	<title>My Art List</title>
+	<link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+	<link th:href="@{/iconos/bootstrap-icons.css}" rel="stylesheet">
+	<link th:href="@{/tema/miestilo.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container text-center">
+	<div>
+		<h1>Iniciando Proyecto Final: My Art List</h1>
+		<div class="opacity-7 shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+			<img th:src="@{/imagen/Mural.jpg}" width="85%" height="85%">
+		</div>
+		<h3 th:text="${nombreAplicacion}"></h3>
+		<h3 th:text="${fecha}"></h3>
+		<i class="bi-window-fullscreen" style="font-size: 4rem; color: white;"></i><br>
+		<img th:src="@{/iconos/reception-4.svg}" alt="Spring MVC" width="32" height="32">
+	</div>
+</div>
+</body>
+</html>

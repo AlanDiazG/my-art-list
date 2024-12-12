@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="es">
+<head th:replace="~{page-templates :: head}"></head>
+<body>
+<header th:replace="~{page-templates :: header}"></header>
+
+<div class="container">
+    <h1>Tu Carrito de Compras</h1>
+    <div th:if="${#lists.isEmpty(items)}">
+        <p>No tienes productos en tu carrito.</p>
+    </div>
+    <div th:unless="${#lists.isEmpty(items)}">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Precio Unitario</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="item : ${items}">
+                <td th:text="${item.producto.nombre}">Nombre del producto</td>
+                <td th:text="${item.producto.precio}">Precio</td>
+                <td th:text="${item.cantidad}">Cantidad</td>
+                <td th:text="${item.producto.precio * item.cantidad}">Subtotal</td>
+                <td>
+                    <a th:href="@{'/eliminarDelCarrito/' + ${item.producto.clave}}" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <h3>Total: <span th:text="${total}">0</span></h3>
+        <!-- Enlace o botón para proceder al pago -->
+        <a href="/pago" class="btn btn-success">Proceder al Pago</a>
+    </div>
+</div>
+</body>
+<footer th:replace="~{page-templates :: footer}"></footer>
+</html>

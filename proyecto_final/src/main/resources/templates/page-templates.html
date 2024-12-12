@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:sec="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org" lang="es">
+<head th:fragment="head">
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Spring Boot UNAM</title>
+	<link rel="icon" type="image/x-icon" th:href="@{/iconos/postage-heart-fill.svg}">
+	<link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
+	<link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+	<link th:href="@{/bootstrap/css/jquery-ui.min.css}" rel="stylesheet">
+	<link th:href="@{/tema/miestilo.css}" rel="stylesheet">
+</head>
+<body>
+<header th:fragment="header">
+
+	<div class="container-fluid  text-center fs-2  text-white ">
+		<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+			<div class="mb-2 mb-md-0 d-flex justify-content-center">
+				<a th:href="@{/}" class="d-inline-flex link-body-emphasis text-decoration-none ">
+					<img th:src="@{/imagen/logo1_1.jpg}" class="img-fluid rounded-5 " style="width: 100%;">
+				</a>
+			</div>
+			<ul class="nav nav-pills d-flex  align-items-center">
+				<li class="nav-item"><a th:href="@{/index}"  class="nav-link active mx-2" aria-current="page" style="font-weight: bold;" >INICIO</a></li>
+				<li class="nav-item">
+					<a th:href="@{/eShop}" class="nav-link mx-2 d-flex flex-column align-items-center">
+						<img th:src="@{/iconos/shop.svg}" alt="eshop" class="img-fluid" style="width: 40px; height: 40px;">
+						<span style="font-weight: bold;">TIENDA</span>
+					</a>
+				</li>
+				<li class="nav-item" sec:authorize="isAuthenticated()">
+					<a th:href="@{/carrito}" class="nav-link mx-2 d-flex flex-column align-items-center" style="font-weight: bold;">
+						<img th:src="@{/iconos/bag-check-fill.svg}" alt="Carrito" class="img-fluid" style="width: 40px; height: 40px;">
+						CARRITO
+					</a>
+				</li>
+
+				<li sec:authorize="hasAuthority('ADMIN')" class="nav-item dropdown">
+					<a
+							class="nav-link dropdown-toggle d-flex flex-column align-items-center" href="#"
+							role="button"
+							data-bs-toggle="dropdown" aria-expanded="false" style="font-weight: bold;">
+						<img th:src="@{/iconos/database-add.svg}" alt="eshop" class="img-fluid" style="width: 40px; height: 40px;">
+						PRODUCTO</a>
+					<ul class="dropdown-menu"
+						aria-labelledby="navbarDropdownMenuLink">
+						<li><a class="dropdown-item" th:href="@{/producto/lista-producto}">BUSCAR PRODUCTO</a>
+						</li>
+						<li><a class="dropdown-item" th:href="@{/producto/alta-producto}">AÑADIR PRODUCTO</a>
+						</li>
+					</ul>
+				</li>
+				<li sec:authorize="hasAuthority('ADMIN')" class="nav-item dropdown">
+					<a
+							class="nav-link dropdown-toggle d-flex flex-column align-items-center" href="#"
+							role="button"
+							data-bs-toggle="dropdown" aria-expanded="false">
+						<img th:src="@{/iconos/database-add.svg}" alt="eshop" class="img-fluid" style="width: 40px; height: 40px;">
+						PINTURA</a>
+					<ul class="dropdown-menu"
+						aria-labelledby="navbarDropdownMenuLink">
+						<li><a class="dropdown-item" th:href="@{/pintura/lista-pintura}">BUSCAR PINTURA</a>
+						</li>
+						<li><a class="dropdown-item" th:href="@{/pintura/alta-pintura}">AÑADIR PINTURA</a>
+						</li>
+					</ul>
+				</li>
+				<li sec:authorize="hasAuthority('ADMIN')" class="nav-item dropdown">
+					<a
+							class="nav-link dropdown-toggle d-flex flex-column align-items-center" href="#"
+							role="button"
+							data-bs-toggle="dropdown" aria-expanded="false">
+						<img th:src="@{/iconos/database-add.svg}" alt="eshop" class="img-fluid" style="width: 40px; height: 40px;">
+						ARTISTA</a>
+					<ul class="dropdown-menu"
+						aria-labelledby="navbarDropdownMenuLink">
+						<li><a class="dropdown-item" th:href="@{/artista/lista-artista}">BUSCAR ARTISTA</a>
+						</li>
+						<li><a class="dropdown-item" th:href="@{/artista/alta-artista}">AÑADIR ARTISTA</a>
+						</li>
+					</ul>
+				</li>
+
+			</ul>
+
+			<div class="d-flex justify-content-start align-items-center">
+				<div sec:authorize="!isAuthenticated()" class="navbar">
+					<a class="btn btn-outline-primary me-2" style="font-size: 0.7em;" th:href="@{/login}">Iniciar Sesion</a>
+				</div>
+
+				<div sec:authorize="!isAuthenticated()" class="navbar">
+					<a class="btn btn-primary me-2" style="font-size: 0.7em;" th:href="@{/register}">Crear Cuenta</a>
+				</div>
+				<div sec:authorize="isAuthenticated()" class="navbar">
+					<a class="btn btn-primary me-2" style="font-size: 0.7em;" th:href="@{/perfil}">Mi Perfil</a>
+				</div>
+				<div sec:authorize="isAuthenticated()" class="navbar">
+					<form id="logout" th:action="@{/doLogout}" method="post">
+						<button class="btn btn-primary" style="font-size: 0.7em;" onclick="document.getElementById('logout').submit();" type="submit">Cerrar Sesion</button>
+					</form>
+				</div>
+			</div>
+
+		</header>
+	</div>
+</header>
+
+	<div th:fragment="main-text"></div>
+	<div th:fragment="footer">
+
+		<div class="container-fluid ">
+			<footer th:fragment="footer" class="d-flex flex-wrap align-items-center justify-content-center  py-0 my-0 border-top">
+				<p class="col-md-4 mb-0 text-white">2024 | Diplomado en Desarrollo de Sistemas con Tecnología Java | Alan Mauricio Díaz Guerrero</p>
+
+				<div class="col-md-3 mb-2 mb-md-0 d-flex justify-content-center">
+					<a th:href="@{/}" class="d-inline-flex link-body-emphasis text-decoration-none ">
+						<img th:src="@{/imagen/logo1_1.jpg}" class="img-fluid rounded-5 " style="width: 30%;">
+					</a>
+				</div>
+
+				<ul class="nav col-md-4 justify-content-end">
+					<li class="nav-item"><a th:href="@{/index}" class="nav-link px-2 text-white">Inicio</a></li>
+					<li class="nav-item"><a href="#" class="nav-link px-2 text-white">Features</a></li>
+					<li class="nav-item"><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
+					<li class="nav-item"><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
+					<li class="nav-item"><a href="#" class="nav-link px-2 text-white">About</a></li>
+				</ul>
+			</footer>
+		</div>
+		<script th:src="@{/bootstrap/js/jquery-3.6.3.js}"></script>
+		<script th:src="@{/bootstrap/js/jquery-ui.min.js}"></script>
+		<script th:src="@{/bootstrap/js/popper.min.js}"></script>
+		<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+	</div>
+</body>
+</html>

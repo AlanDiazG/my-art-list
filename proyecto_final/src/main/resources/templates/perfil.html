@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head th:replace="~{page-templates :: head}"></head>
+<body>
+<header th:replace="~{page-templates :: header}"></header>
+
+<div class="container">
+  <h1>Perfil de [[${usuario.nombre}]]</h1>
+
+  <h2>Datos Personales</h2>
+  <table class="table">
+    <tr>
+      <th>Correo Electrónico:</th>
+      <td th:text="${usuario.correo}">correo@ejemplo.com</td>
+    </tr>
+    <tr>
+      <th>Teléfono:</th>
+      <td th:text="${usuario.telefono}">1234567890</td>
+    </tr>
+    <tr>
+      <th>Dirección:</th>
+      <td th:text="${usuario.direccion}">Dirección del usuario</td>
+    </tr>
+    <tr>
+      <th>Género:</th>
+      <td th:text="${usuario.genero.nombre}">Masculino</td>
+    </tr>
+    <tr>
+      <th>Carrera Profesional:</th>
+      <td th:text="${usuario.carreraProfesional.nombre}">Ingeniería</td>
+    </tr>
+  </table>
+  <a href="/perfil/editar" class="btn btn-primary">Editar Datos Personales</a>
+  <br>
+  <h2>Compras Anteriores</h2>
+  <div th:if="${compras.isEmpty()}">
+    <p>No has realizado compras aún.</p>
+  </div>
+  <div th:unless="${compras.isEmpty()}">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>ID Venta</th>
+        <th>Fecha</th>
+        <th>Total</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="venta : ${compras}">
+        <td th:text="${venta.id}">1</td>
+        <td th:text="${#dates.format(venta.fecha, 'dd/MM/yyyy')}">01/01/2023</td>
+        <td th:text="${venta.total}">0.00</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Mis Tarjetas</h2>
+  <div th:if="${tarjetas.isEmpty()}">
+    <p>No tienes tarjetas registradas.</p>
+  </div>
+  <div th:unless="${tarjetas.isEmpty()}">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Tipo</th>
+        <th>Número</th>
+        <th>Nombre del Titular</th>
+        <th>Saldo</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="tarjeta : ${tarjetas}">
+        <td th:text="${tarjeta.tipoTarjeta}">Visa</td>
+        <td th:text="${tarjeta.numeroTarjeta}">**** **** **** 1234</td>
+        <td th:text="${tarjeta.nombreTitular} + ' ' + ${tarjeta.apellidoTitular}">Juan Pérez</td>
+        <td th:text="${tarjeta.saldo}">0.00</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <a href="/perfil/nuevaTarjeta" class="btn btn-primary">Añadir Nueva Tarjeta</a>
+</div>
+
+<footer th:replace="~{page-templates :: footer}"></footer>
+</body>
+</html>

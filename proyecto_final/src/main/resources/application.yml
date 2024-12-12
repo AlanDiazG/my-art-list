@@ -1,0 +1,41 @@
+server:
+  port: 8090
+
+# Set here configurations for the database connection
+spring:
+  datasource:
+    url: jdbc:mariadb://localhost:3306/springsecurity
+    username: root
+    password: sqlMD3
+    driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MariaDBDialect
+        format_sql: true
+  application:
+    name: My Art List
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+
+#Ruta de archivos
+ejemplo:
+  imagen:
+    ruta: c:/imagenes/
+
+# LOGGING LEVEL
+logging:
+  level:
+    root: INFO
+
+# JWT
+jwt:
+  secret: 5f39c83d2d0482e07b5306f3f5a0fd8e1b4e9844987121ba4b99f3f4805fd4f85cc0f24ece8556dd10456a45d20cd2d61e7c36a77583674be979b071b869f34f
+  expirationDateInMs: 3600
+  refreshExpirationDateInMs: 900

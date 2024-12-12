@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head th:replace="~{page-templates :: head}"></head>
+<body>
+<header th:replace="~{page-templates :: header}"></header>
+
+<div class="container">
+    <h1 th:text="${mensaje}">Pago realizado con éxito.</h1>
+    <a href="/" class="btn btn-primary">Volver al inicio</a>
+</div>
+
+<footer th:replace="~{page-templates :: footer}"></footer>
+</body>
+</html>

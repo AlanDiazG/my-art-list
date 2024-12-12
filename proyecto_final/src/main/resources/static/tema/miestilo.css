@@ -1,0 +1,43 @@
+.img-container {
+    display: flex;
+    border: 5px solid #333; /* Marco gris oscuro */
+    padding: 0px;           /* Espaciado entre la imagen y el marco */
+    border-radius: 8px;     /* Bordes redondeados */
+    justify-content:center;
+}
+
+.background_navyBlue{
+ background-color: #2e4059 !important;
+}
+
+.navegacion{
+display: flex;
+justify-content:center;
+align-items:center;
+}
+
+body{
+    color: white;
+    background-color: #111827;
+}
+
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: 'Gotham SSm A', 'Gotham SSm B','Montserrat', "Ubuntu", Helvetica, Arial, sans-serif!important;
+    font-weight: bold;
+}
+
+body{
+    font-family: 'Hoefler Text A', 'Hoefler Text B', 'Ibarra Real Nova', serif;
+}
