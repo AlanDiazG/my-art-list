@@ -6,6 +6,7 @@ import edu.unam.springsecurity.service.genero.GeneroService;
 import edu.unam.springsecurity.service.tarjeta.TarjetaService;
 import edu.unam.springsecurity.service.usuario.UsuarioService;
 import edu.unam.springsecurity.service.venta.VentaService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @Controller
 public class PerfilController {
 
@@ -32,16 +34,47 @@ public class PerfilController {
     @Autowired
     private CarreraProfesionalService carreraProfesionalService;
 
-    @GetMapping("/perfil/editar")
-    public String mostrarFormularioEditarPerfil(Authentication authentication, Model model) {
+    @GetMapping("/perfil")
+    public String verPerfil(Authentication authentication, Model model) {
         if (authentication == null || !authentication.isAuthenticated()) {
+            log.warn("Acceso no autorizado a /perfil");
             return "redirect:/login";
         }
 
         String email = authentication.getName();
+        log.info("Accediendo al perfil del usuario {}", email);
         Usuario usuario = usuarioService.buscarPorCorreo(email);
 
         if (usuario == null) {
+            log.error("Usuario no encontrado con email: {}", email);
+            return "redirect:/login";
+        }
+
+        // Obtener compras anteriores (ventas finalizadas)
+        List<Venta> compras = ventaService.obtenerVentasFinalizadasPorUsuario(usuario);
+
+        // Obtener tarjetas del usuario
+        List<Tarjeta> tarjetas = tarjetaService.obtenerTarjetasPorUsuario(usuario);
+
+        model.addAttribute("usuario", usuario);
+        model.addAttribute("compras", compras);
+        model.addAttribute("tarjetas", tarjetas);
+        return "perfil";
+    }
+
+    @GetMapping("/perfil/editar")
+    public String mostrarFormularioEditarPerfil(Authentication authentication, Model model) {
+        if (authentication == null || !authentication.isAuthenticated()) {
+            log.warn("Acceso no autorizado a /perfil/editar");
+            return "redirect:/login";
+        }
+
+        String email = authentication.getName();
+        log.info("Mostrando formulario de edición de perfil para el usuario {}", email);
+        Usuario usuario = usuarioService.buscarPorCorreo(email);
+
+        if (usuario == null) {
+            log.error("Usuario no encontrado con email: {}", email);
             return "redirect:/login";
         }
 
@@ -63,13 +96,16 @@ public class PerfilController {
             Model model) {
 
         if (authentication == null || !authentication.isAuthenticated()) {
+            log.warn("Acceso no autorizado a /perfil/guardar");
             return "redirect:/login";
         }
 
         String email = authentication.getName();
+        log.info("Usuario {} guardando cambios en su perfil", email);
         Usuario usuario = usuarioService.buscarPorCorreo(email);
 
         if (usuario == null) {
+            log.error("Usuario no encontrado con email: {}", email);
             return "redirect:/login";
         }
 
@@ -88,37 +124,14 @@ public class PerfilController {
 
         // Guardar los cambios
         usuarioService.guardar(usuario);
+        log.info("Perfil del usuario {} actualizado correctamente", email);
 
         return "redirect:/perfil";
     }
 
-    @GetMapping("/perfil")
-    public String verPerfil(Authentication authentication, Model model) {
-        if (authentication == null || !authentication.isAuthenticated()) {
-            return "redirect:/login";
-        }
-
-        String email = authentication.getName();
-        Usuario usuario = usuarioService.buscarPorCorreo(email);
-
-        if (usuario == null) {
-            return "redirect:/login";
-        }
-
-        // Obtener compras anteriores (ventas finalizadas)
-        List<Venta> compras = ventaService.obtenerVentasFinalizadasPorUsuario(usuario);
-
-        // Obtener tarjetas del usuario
-        List<Tarjeta> tarjetas = tarjetaService.obtenerTarjetasPorUsuario(usuario);
-
-        model.addAttribute("usuario", usuario);
-        model.addAttribute("compras", compras);
-        model.addAttribute("tarjetas", tarjetas);
-        return "perfil";
-    }
-
     @GetMapping("/perfil/nuevaTarjeta")
     public String mostrarFormularioNuevaTarjeta(Model model) {
+        log.info("Mostrando formulario para añadir nueva tarjeta");
         model.addAttribute("tarjeta", new Tarjeta());
         return "nueva_tarjeta";
     }
@@ -126,6 +139,7 @@ public class PerfilController {
     @PostMapping("/perfil/guardarTarjeta")
     public String guardarTarjeta(Authentication authentication, @ModelAttribute Tarjeta tarjeta, Model model) {
         if (authentication == null || !authentication.isAuthenticated()) {
+            log.warn("Acceso no autorizado a /perfil/guardarTarjeta");
             return "redirect:/login";
         }
 
@@ -133,6 +147,7 @@ public class PerfilController {
         Usuario usuario = usuarioService.buscarPorCorreo(email);
 
         if (usuario == null) {
+            log.error("Usuario no encontrado con email: {}", email);
             return "redirect:/login";
         }
 
@@ -141,6 +156,7 @@ public class PerfilController {
 
         // Guardar la tarjeta
         tarjetaService.guardarTarjeta(tarjeta);
+        log.info("Tarjeta guardada para el usuario {}", email);
 
         return "redirect:/perfil";
     }

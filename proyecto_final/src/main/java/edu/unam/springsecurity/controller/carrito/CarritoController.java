@@ -9,6 +9,7 @@ import edu.unam.springsecurity.security.model.UserDetailsImpl;
 import edu.unam.springsecurity.service.carrito.CarritoService;
 import edu.unam.springsecurity.service.producto.ProductoService;
 import edu.unam.springsecurity.service.usuario.UsuarioService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -17,7 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Date;
-
+@Slf4j
 @Controller
 public class CarritoController {
 
@@ -35,24 +36,27 @@ public class CarritoController {
                                    @RequestParam(name = "cantidad", defaultValue = "1") int cantidad,
                                    Authentication authentication, RedirectAttributes redirectAttributes) {
         if (authentication == null) {
+            log.warn("Usuario no autenticado intentando agregar al carrito");
             return "redirect:/login";
         }
 
         String email = authentication.getName();
-        System.out.println("Email del usuario autenticado: " + email);
+        log.info("Usuario {} agregando producto {} al carrito", email, productoId);
 
         Usuario usuario = usuarioService.buscarPorCorreo(email);
 
         if (usuario == null) {
-            System.out.println("No se encontró el usuario con email: " + email);
+            log.error("No se encontró el usuario con email: {}", email);
             return "redirect:/login";
         }
         Producto producto = productoService.buscarProductoId(productoId);
         if (producto != null) {
             Venta carrito = carritoService.obtenerCarritoUsuario(usuario);
             carritoService.agregarProducto(carrito, producto, cantidad);
+            log.info("Producto {} agregado al carrito del usuario {}", productoId, email);
             redirectAttributes.addFlashAttribute("success", "Producto agregado al carrito");
         } else {
+            log.warn("Producto {} no encontrado", productoId);
             redirectAttributes.addFlashAttribute("error", "Producto no encontrado");
         }
         return "redirect:/eShop";

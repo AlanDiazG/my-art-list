@@ -8,6 +8,7 @@ import edu.unam.springsecurity.service.carrito.CarritoService;
 import edu.unam.springsecurity.service.tarjeta.TarjetaService;
 import edu.unam.springsecurity.service.usuario.UsuarioService;
 import edu.unam.springsecurity.service.venta.VentaService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -15,7 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@Slf4j
 @Controller
 public class PagoController {
 
@@ -57,6 +58,7 @@ public class PagoController {
                                @RequestParam("tarjetaId") Integer tarjetaId,
                                Model model) {
         if (authentication == null || !authentication.isAuthenticated()) {
+            log.warn("Usuario no autenticado intentando procesar pago");
             return "redirect:/login";
         }
 
@@ -64,12 +66,14 @@ public class PagoController {
         Usuario usuario = usuarioService.buscarPorCorreo(email);
 
         if (usuario == null) {
+            log.error("No se encontró el usuario con email: {}", email);
             return "redirect:/login";
         }
-
+        log.info("Usuario {} procesando pago con tarjeta {}", email, tarjetaId);
         Tarjeta tarjeta = tarjetaService.obtenerTarjetaPorIdYUsuario(tarjetaId, usuario);
 
         if (tarjeta == null) {
+            log.warn("Tarjeta {} no encontrada para el usuario {}", tarjetaId, email);
             model.addAttribute("error", "Tarjeta no encontrada.");
             return "pago";
         }
@@ -78,19 +82,21 @@ public class PagoController {
         Float total = (float) carrito.getTotal();
 
         if (tarjeta.getSaldo() < total) {
+            log.warn("Saldo insuficiente en la tarjeta {} del usuario {}", tarjetaId, email);
             model.addAttribute("error", "Saldo insuficiente en la tarjeta.");
             return "pago";
         }
 
         // Actualizar el saldo de la tarjeta
         tarjetaService.actualizarSaldo(tarjeta, tarjeta.getSaldo() - total);
+        log.info("Saldo actualizado de la tarjeta {}: nuevo saldo {}", tarjetaId, tarjeta.getSaldo());
 
-        // Marcar la venta como finalizada
         carrito.setFinalizada(true);
         ventaService.guardarVenta(carrito);
+        log.info("Venta {} finalizada para el usuario {}", carrito.getId(), email);
 
-        // Crear un nuevo carrito para el usuario (opcional)
         carritoService.crearNuevoCarritoParaUsuario(usuario);
+        log.info("Nuevo carrito creado para el usuario {}", email);
 
         model.addAttribute("mensaje", "Pago realizado con éxito.");
         return "pago_exitoso";

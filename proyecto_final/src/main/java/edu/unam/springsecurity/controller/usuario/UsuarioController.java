@@ -1,10 +1,10 @@
 package edu.unam.springsecurity.controller.usuario;
 
-
 import edu.unam.springsecurity.entities.Usuario;
 import edu.unam.springsecurity.service.usuario.UsuarioService;
 import edu.unam.springsecurity.util.RenderPagina;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -15,14 +15,17 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+@Slf4j
 @Controller
 @RequestMapping("usuario")
 public class UsuarioController {
+
     @Autowired
     UsuarioService usuarioService;
 
     @GetMapping("alta-usuario")
     public String altaCaladero(Model model) {
+        log.info("Accediendo a la página de alta de usuario");
         Usuario usuario = new Usuario();
         model.addAttribute("contenido", "Alta de Usuario");
         model.addAttribute("usuario", usuario);
@@ -31,47 +34,48 @@ public class UsuarioController {
     }
 
     @PostMapping("salvar-usuario")
-    public String salvarUsuario(@Valid @ModelAttribute("usuario")Usuario usuario
-            , BindingResult result, Model model,
-                              RedirectAttributes flash){
-        System.out.println(usuario);
-        if(result.hasErrors()){
-            model.addAttribute("contenido","Error en el nombre, no debe ser vacío");
+    public String salvarUsuario(@Valid @ModelAttribute("usuario") Usuario usuario,
+                                BindingResult result, Model model,
+                                RedirectAttributes flash) {
+        log.info("Intentando guardar usuario: {}", usuario);
+        if (result.hasErrors()) {
+            log.warn("Errores de validación al guardar el usuario: {}", result.getAllErrors());
+            model.addAttribute("contenido", "Error en los datos, verifique los campos");
             return "usuario/alta-usuario";
         }
         usuarioService.guardar(usuario);
-        //model.addAttribute("success","Se almaceno lote con éxito");
-        //model.addAttribute("lote",lote);
-        flash.addFlashAttribute("success","Se almaceno Usuario con éxito");
-//        return "lote/alta-lote";
+        log.info("Usuario guardado exitosamente con ID: {}", usuario.getId());
+        flash.addFlashAttribute("success", "Se almacenó el usuario con éxito");
         return "redirect:/usuario/lista-usuario";
     }
 
     @GetMapping("lista-usuario")
-    public String listaUsuario(@RequestParam(name = "page", defaultValue = "0")int page, Model model){
-        Pageable pageable = PageRequest.of(page,4);
+    public String listaUsuario(@RequestParam(name = "page", defaultValue = "0") int page, Model model) {
+        log.info("Listando usuarios, página {}", page);
+        Pageable pageable = PageRequest.of(page, 4);
         Page<Usuario> usuarioEntities = usuarioService.buscarAllUsuario(pageable);
         RenderPagina<Usuario> renderPagina = new RenderPagina<>("lista-usuario", usuarioEntities);
         model.addAttribute("usuario", usuarioEntities);
-        model.addAttribute("page",renderPagina);
-        model.addAttribute("contenido","Lista de Usuarios");
+        model.addAttribute("page", renderPagina);
+        model.addAttribute("contenido", "Lista de Usuarios");
         return "usuario/lista-usuario";
     }
 
     @GetMapping("eliminar-usuario/{id}")
-    public String eliminarUsuario(@PathVariable("id")Integer id,RedirectAttributes flash){
+    public String eliminarUsuario(@PathVariable("id") Integer id, RedirectAttributes flash) {
+        log.info("Eliminando usuario con ID: {}", id);
         usuarioService.borrar(id);
-        flash.addFlashAttribute("success","Se borro con exito Usuario");
+        log.info("Usuario con ID {} eliminado", id);
+        flash.addFlashAttribute("success", "Se borró con éxito el usuario");
         return "redirect:/usuario/lista-usuario";
     }
 
     @GetMapping("modificar-usuario/{id}")
-    public String saltoModificar(@PathVariable("id")Integer id, Model model){
+    public String saltoModificar(@PathVariable("id") Integer id, Model model) {
+        log.info("Accediendo a modificación de usuario con ID: {}", id);
         Usuario usuario = usuarioService.buscarUsuarioId(id);
-        model.addAttribute("usuario",usuario);
-        model.addAttribute("contenido","Modificar Usuario");
+        model.addAttribute("usuario", usuario);
+        model.addAttribute("contenido", "Modificar Usuario");
         return "usuario/alta-usuario";
     }
-
-
 }
