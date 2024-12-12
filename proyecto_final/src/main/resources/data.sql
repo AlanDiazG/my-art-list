@@ -1,0 +1,119 @@
+INSERT INTO artista (id, nombre, nacionalidad) VALUES
+(1, 'Vincent van Gogh', 'Holandesa'),
+(2, 'Leonardo da Vinci', 'Italiana'),
+(3, 'Claude Monet', 'Francés'),
+(4, 'Diego Velázquez', 'Español'),
+(5, 'Joan Miró', 'Español'),
+(6, 'El Greco', 'Español'),
+(7, 'Raphael', 'Italiano'),
+(8, 'Edvard Munch', 'Noruego'),
+(9, 'Michelangelo', 'Italiano'),
+(10, 'Sandro Botticelli', 'Italiano'),
+(11, 'Johannes Vermeer', 'Holandesa'),
+(12, 'Pablo Picasso', 'Español'),
+(13, 'Gustav Klimt', 'Austriaco'),
+(14, 'Eugène Delacroix', 'Francés'),
+(15, 'Hieronymus Bosch', 'Holandesa'),
+(16, 'Grant Wood', 'Estadounidense'),
+(17, 'Tintoretto', 'Italiano'),
+(18, 'Alexandre Cabanel', 'Francés'),
+(19, 'Théodore Géricault', 'Francés'),
+(20, 'Pierre-Auguste Renoir', 'Francés'),
+(21, 'Matthias Grünewald', 'Alemán'),
+(22, 'Peter Paul Rubens', 'Flamenco'),
+(23, 'Jan van Eyck', 'Flamenco'),
+(24, 'Tiziano', 'Italiano'),
+(25, 'Rembrandt', 'Holandesa'),
+(26, 'William-Adolphe Bouguereau', 'Francés'),
+(27, 'Henri Matisse', 'Francés'),
+(28, 'Giovanni Bellini', 'Italiano'),
+(29, 'Anónimo', 'Mexicano'),
+(30, 'Salvador Dalí', 'Español');
+
+INSERT INTO pinturas (tituloObra, idArtista, anioCreacion, tecnica, detalles) VALUES
+('La Gioconda', 2, '1503-01-01', 'Óleo sobre tabla', 'Pintada por Leonardo da Vinci entre 1503 y 1506, "La Gioconda", también conocida como "Mona Lisa", es uno de los retratos más famosos del mundo. Representa a Lisa Gherardini, esposa de un comerciante florentino. Su sonrisa enigmática ha sido objeto de innumerables debates y estudios. Se cree que Leonardo la llevó consigo durante años, retocándola constantemente, lo que sugiere una conexión personal profunda con la obra. Un detalle curioso es que no tiene cejas ni pestañas, lo que algunos atribuyen a una moda de la época o al deterioro de la pintura.'),
+('La Noche Estrellada', 1, '1889-06-01', 'Óleo sobre lienzo', 'Vincent van Gogh pintó "La Noche Estrellada" desde su celda en el asilo de Saint-Rémy-de-Provence. La obra captura un cielo nocturno turbulento y vibrante, reflejando el estado emocional del artista. El ciprés oscuro en primer plano conecta la tierra y el cielo, simbolizando quizás la conexión entre la vida y la muerte. Estudios científicos han descubierto que los remolinos en el cielo de Van Gogh reflejan patrones matemáticos de turbulencia. A pesar de ser una de sus pinturas más famosas hoy en día, Van Gogh la consideraba una obra fallida.'),
+('La Última Cena', 2, '1498-01-01', 'Tempera y óleo sobre yeso', 'Creada entre 1495 y 1498 por Leonardo da Vinci para el refectorio del convento de Santa Maria delle Grazie en Milán. "La Última Cena" captura el momento en que Jesús anuncia que uno de sus discípulos lo traicionará. Leonardo experimentó con una nueva técnica al pintar sobre yeso seco, lo que lamentablemente ha llevado al deterioro de la pintura con el tiempo. Se dice que Leonardo empleó a personas reales como modelos, y que buscó capturar las emociones y reacciones humanas de manera innovadora para su época.'),
+('El Grito', 8, '1893-01-01', 'Óleo, temple y pastel sobre cartón', 'Edvard Munch creó "El Grito" como parte de su serie "El Friso de la Vida". La figura andrógina en primer plano expresa una angustia profunda, en sintonía con el movimiento expresionista. El cielo rojo puede haber sido inspirado por las erupciones volcánicas del Krakatoa, que afectaron los atardeceres de todo el mundo. Una inscripción en lápiz en la esquina superior dice: "Sólo pudo haber sido pintado por un loco", que fue añadida por el propio Munch, reflejando sus luchas con problemas de salud mental.'),
+('Las Meninas', 4, '1656-01-01', 'Óleo sobre lienzo', 'Diego Velázquez pintó "Las Meninas" en 1656, y es considerada una de las obras más analizadas en la historia del arte. La pintura representa a la infanta Margarita Teresa rodeada de sus damas de compañía, pero también incluye al propio Velázquez trabajando en un gran lienzo. El juego de miradas y reflejos, especialmente con la presencia de un espejo que muestra a los reyes Felipe IV y Mariana de Austria, crea una compleja interacción entre el espectador y los personajes.'),
+('La Creación de Adán', 9, '1512-01-01', 'Fresco', 'Parte de los frescos que Miguel Ángel pintó en la bóveda de la Capilla Sixtina, "La Creación de Adán" muestra el momento en que Dios le da vida a Adán. La composición con los dedos casi tocándose se ha convertido en un ícono cultural. Algunos estudiosos han propuesto que la figura que rodea a Dios tiene la forma de un cerebro humano, insinuando un conocimiento anatómico avanzado y posiblemente ocultando mensajes sobre la inteligencia divina.'),
+('El Nacimiento de Venus', 10, '1486-01-01', 'Tempera sobre lienzo', 'Sandro Botticelli pintó "El Nacimiento de Venus" representando a la diosa emergiendo del mar sobre una concha. La obra es un símbolo del ideal de belleza renacentista y tiene fuertes influencias neoplatónicas. Venus aparece desnuda, lo cual era inusual para la época, pero se justifica por su carácter mitológico. La pintura fue encargada probablemente por la familia Medici, grandes mecenas del arte en Florencia.'),
+('La Joven de la Perla', 11, '1665-01-01', 'Óleo sobre lienzo', 'Johannes Vermeer creó esta obra, también conocida como "La Mona Lisa del Norte". El cuadro es un ejemplo de "tronie", un estudio de expresión y personaje más que un retrato. La joven mira directamente al espectador con una expresión enigmática y lleva un llamativo pendiente de perla. El uso magistral de la luz y el color caracteriza el estilo de Vermeer.'),
+('Guernica', 12, '1937-01-01', 'Óleo sobre lienzo', 'Pablo Picasso pintó "Guernica" en respuesta al bombardeo de la ciudad vasca durante la Guerra Civil Española. La obra es un poderoso alegato contra la guerra y el sufrimiento humano. En tonos grises, negros y blancos, representa figuras distorsionadas y simbólicas como el toro y el caballo, que han sido objeto de múltiples interpretaciones. Picasso se negó a que la obra regresara a España hasta que se restaurara la democracia, y permaneció en el Museo de Arte Moderno de Nueva York hasta 1981.'),
+('El Beso', 13, '1908-01-01', 'Óleo sobre lienzo', 'Gustav Klimt creó "El Beso" durante su "Período Dorado", utilizando hojas de oro en la obra. La pintura muestra a una pareja abrazándose en un prado de flores, envuelta en ornamentos dorados y patrones abstractos. La obra simboliza el amor y la intimidad, fusionando elementos del simbolismo y el modernismo vienés. Se dice que la mujer representada es Emilie Flöge, pareja y musa de Klimt.'),
+('La Persistencia de la Memoria', 30, '1931-01-01', 'Óleo sobre lienzo', 'Salvador Dalí pintó esta icónica obra surrealista, famosa por sus "relojes blandos" que parecen derretirse en un paisaje desolado. La pintura explora temas de tiempo, memoria y angustia existencial. Dalí afirmó que la idea surgió al observar queso camembert derretido. El objeto en el centro es una forma biomórfica que representa un autorretrato distorsionado del artista.'),
+('La Libertad Guiando al Pueblo', 14, '1830-01-01', 'Óleo sobre lienzo', 'Eugène Delacroix pintó esta obra inspirada en la Revolución de Julio de 1830 en Francia. La figura central es Marianne, personificación de la libertad, llevando la bandera francesa y encabezando al pueblo en combate. La pintura combina el realismo con el romanticismo, y ha sido un símbolo de lucha y resistencia. Delacroix, aunque no participó en la revolución, se sentía profundamente afectado por los eventos y expresó su patriotismo a través de esta obra.'),
+('El Jardín de las Delicias', 15, '1505-01-01', 'Óleo sobre tabla', 'Hieronymus Bosch creó este tríptico que representa el paraíso, la vida terrenal y el infierno. Lleno de imágenes simbólicas y fantásticas criaturas, la obra ha intrigado a espectadores y estudiosos durante siglos. Se cree que es una advertencia sobre los peligros de la lujuria y los pecados humanos. Las interpretaciones varían desde lecturas religiosas hasta análisis psicológicos y alquímicos.'),
+('Noche Estrellada sobre el Ródano', 1, '1888-09-01', 'Óleo sobre lienzo', 'Otra de las nocturnas de Van Gogh, esta obra muestra el reflejo de las estrellas y las luces de gas en el río Ródano. Pintada en Arlés, captura la tranquilidad de la noche y el efecto de la luz sobre el agua. Van Gogh estaba fascinado por los colores de la noche y cómo representarlos. Esta pintura precede a "La Noche Estrellada" y muestra un enfoque más calmado y realista.'),
+('La Escuela de Atenas', 7, '1511-01-01', 'Fresco', 'Raphael pintó este fresco como parte de la decoración de las Estancias del Vaticano. Representa a los grandes filósofos y científicos de la antigüedad, como Platón y Aristóteles en el centro. La composición armoniosa y el uso de la perspectiva ejemplifican los ideales renacentistas. Se dice que Raphael incluyó retratos de sus contemporáneos, como Leonardo da Vinci (como Platón) y Michelangelo.'),
+('American Gothic', 16, '1930-01-01', 'Óleo sobre tabla', 'Grant Wood pintó esta obra representando a un granjero y su hija frente a una casa de estilo gótico rural. La pintura es tanto una celebración como una parodia de la vida en el medio oeste estadounidense. Los modelos fueron la hermana del artista y su dentista. La obra ha sido ampliamente parodiada y es una imagen icónica de la cultura estadounidense.'),
+('El Viejo Guitarrista', 12, '1903-01-01', 'Óleo sobre lienzo', 'Parte del Período Azul de Picasso, "El Viejo Guitarrista" muestra a un músico ciego y empobrecido tocando en las calles de Barcelona. La monocromía azul refleja la melancolía y el aislamiento. Se ha descubierto que debajo de la pintura hay otras imágenes, lo que indica que Picasso reutilizó el lienzo. La obra explora temas de sufrimiento y humanidad.'),
+('El Hombre Vitruviano', 2, '1490-01-01', 'Tinta sobre papel', 'Este dibujo y sus notas acompañantes por Leonardo da Vinci describen las proporciones ideales del cuerpo humano según Vitruvio. El hombre está inscrito en un círculo y un cuadrado, simbolizando la conexión entre lo humano y lo divino. La obra es un ejemplo de la fusión de arte y ciencia durante el Renacimiento. Se ha convertido en un símbolo del equilibrio y la perfección.'),
+('La Balsa de la Medusa', 19, '1818-01-01', 'Óleo sobre lienzo', 'Théodore Géricault pintó esta obra basada en un trágico naufragio real. La pintura muestra a los sobrevivientes en una balsa improvisada enfrentando el hambre, la deshidratación y el canibalismo. Géricault realizó una investigación exhaustiva, incluyendo estudios de cadáveres y entrevistas con sobrevivientes. La obra generó controversia por su realismo y crítica implícita al gobierno francés.'),
+('El Baile en el Moulin de la Galette', 20, '1876-01-01', 'Óleo sobre lienzo', 'Pierre-Auguste Renoir capturó una escena alegre de la vida parisina en Montmartre. La pintura muestra a gente bailando y socializando en un jardín al aire libre. El uso de la luz y el movimiento son característicos del impresionismo. Renoir utilizó a amigos y conocidos como modelos, y la obra es celebrada por su atmósfera festiva y colorido vibrante.'),
+('La Crucifixión', 21, '1515-01-01', 'Óleo sobre panel', 'Matthias Grünewald creó esta potente representación de la crucifixión como parte del Retablo de Isenheim. La obra destaca por su realismo crudo y emocional, mostrando el sufrimiento de Cristo con detalles gráficos. Fue realizada para un hospital que trataba enfermedades de la piel, y se cree que las imágenes tenían un propósito terapéutico para los pacientes.'),
+('Las Tres Gracias', 22, '1639-01-01', 'Óleo sobre tabla', 'Peter Paul Rubens pintó esta obra representando a las tres gracias de la mitología clásica: Aglaia, Eufrosina y Talía. Simbolizan la belleza, la alegría y el encanto. La pintura es un ejemplo del estilo barroco de Rubens, con figuras voluptuosas y un uso dinámico del color y la luz. Se cree que una de las gracias es un retrato de su segunda esposa, Hélène Fourment.'),
+('La Anunciación', 2, '1472-01-01', 'Óleo sobre tabla', 'Una de las primeras obras de Leonardo da Vinci, "La Anunciación" muestra el momento en que el arcángel Gabriel anuncia a María que será madre de Jesús. La atención al detalle en el paisaje y la flora demuestra el interés de Leonardo por la naturaleza. La perspectiva y la composición reflejan su estudio temprano de la proporción y el espacio.'),
+('El Retrato de Giovanni Arnolfini y su Esposa', 23, '1434-01-01', 'Óleo sobre tabla', 'Jan van Eyck pintó este retrato doble que es rico en simbolismo y detalles minuciosos. La pintura ha sido objeto de debate sobre si representa un matrimonio, un compromiso o un acuerdo comercial. El espejo en la pared del fondo refleja a dos figuras, posiblemente el artista y un testigo. La firma de Van Eyck aparece en la pared, afirmando que "estuvo aquí".'),
+('La Primavera', 10, '1482-01-01', 'Tempera sobre tabla', 'Otra obra maestra de Botticelli, "La Primavera" es una alegoría mitológica que representa la llegada de la primavera. Incluye figuras como Venus, Mercurio y las Tres Gracias, en un jardín lleno de flora detallada. La pintura está cargada de simbolismo neoplatónico y ha sido interpretada como una celebración de la fertilidad y el amor espiritual.'),
+('La Venus de Urbino', 24, '1538-01-01', 'Óleo sobre lienzo', 'Tiziano pintó esta representación de Venus reclinada, que influyó en numerosas obras posteriores. La pintura combina elementos mitológicos y cotidianos, mostrando a Venus en un entorno doméstico. La obra ha sido objeto de análisis por su sensualidad y la forma en que el desnudo femenino es presentado.'),
+('El Juicio Final', 9, '1541-01-01', 'Fresco', 'Pintado por Michelangelo en la pared del altar de la Capilla Sixtina, "El Juicio Final" muestra la segunda venida de Cristo y el destino final de las almas. La obra refleja las preocupaciones religiosas y políticas de la época, incluyendo la Contrarreforma. Michelangelo enfrentó críticas por la desnudez de las figuras, y después de su muerte, se añadió pintura para cubrir partes del cuerpo.'),
+('El Rapto de Europa', 25, '1632-01-01', 'Óleo sobre lienzo', 'Rembrandt pintó este cuadro basado en el mito griego en el que Zeus, transformado en toro, secuestra a la princesa Europa. La obra se destaca por su uso dramático de la luz y la expresión de los personajes. La pintura captura el momento de tensión y emoción, con un sentido de movimiento y narrativa.'),
+('La Virgen de las Rocas', 2, '1486-01-01', 'Óleo sobre tabla', 'Leonardo da Vinci creó dos versiones de esta obra, ambas representando a la Virgen María con el Niño Jesús, Juan el Bautista y un ángel en un paisaje rocoso. La pintura es conocida por su uso del sfumato y la composición triangular. Los estudios sugieren que hay simbolismo oculto y que la obra refleja conocimientos científicos y botánicos avanzados para su época.'),
+('El Autorretrato con Oreja Vendada', 1, '1889-01-01', 'Óleo sobre lienzo', 'Después de un episodio de crisis mental en el que se cortó parte de su oreja, Van Gogh pintó este autorretrato. La obra refleja su estado emocional y su compromiso continuo con el arte a pesar de sus problemas de salud mental. El uso de colores y pinceladas expresa la tensión interna y la resiliencia del artista.'),
+('El Carro de Heno', 15, '1516-01-01', 'Óleo sobre tabla', 'Parte de un tríptico de Hieronymus Bosch, "El Carro de Heno" es una alegoría sobre la vanidad y la futilidad de los deseos mundanos. La escena central muestra a personas persiguiendo un carro lleno de heno, simbolizando la búsqueda inútil de riquezas materiales. Las imágenes extravagantes y las criaturas fantásticas son características del estilo de Bosch.'),
+('La Piedad', 9, '1499-01-01', 'Mármol', 'Esta escultura de Michelangelo representa a la Virgen María sosteniendo el cuerpo sin vida de Cristo. Es la única obra que lleva la firma del artista, inscrita en la banda que cruza el pecho de María. La escultura destaca por su detalle, emotividad y perfección técnica. Fue realizada cuando Michelangelo tenía apenas 24 años.'),
+('El Triunfo de Galatea', 7, '1514-01-01', 'Fresco', 'Raphael pintó este fresco en la Villa Farnesina en Roma. Representa a Galatea, una ninfa marina de la mitología griega, escapando del cíclope Polifemo. La obra es una celebración de la belleza y el movimiento, con influencias de la escultura clásica. El uso de colores brillantes y la composición dinámica son notables.'),
+('La Batalla de San Romano', 28, '1456-01-01', 'Tempera sobre tabla', 'Paolo Uccello pintó esta serie de paneles que representan la batalla entre Florencia y Siena. La obra es famosa por su uso pionero de la perspectiva y la representación detallada de la acción militar. Los caballos y los soldados parecen casi suspendidos en el tiempo, creando una sensación teatral.'),
+('La Dama del Armiño', 2, '1490-01-01', 'Óleo sobre tabla', 'Otro retrato de Leonardo da Vinci, esta vez de Cecilia Gallerani, amante de Ludovico Sforza. El armiño que sostiene es un símbolo de pureza y también un juego de palabras con el nombre de Ludovico, conocido como "Il Moro" (que suena similar a la palabra griega para armiño). La pintura es celebrada por su detalle y la expresión introspectiva de la modelo.'),
+('La Torre de Babel', 29, '1563-01-01', 'Óleo sobre tabla', 'Pieter Brueghel el Viejo pintó esta obra que ilustra el relato bíblico de la construcción de la torre para alcanzar el cielo. La pintura muestra la arrogancia humana y las consecuencias de desafiar a lo divino. Detalles minuciosos y arquitectura elaborada caracterizan la obra. Brueghel incluyó elementos contemporáneos de su época en la representación.'),
+('La Lechera', 11, '1658-01-01', 'Óleo sobre lienzo', 'Vermeer pintó esta escena doméstica que muestra a una mujer sirviendo leche. La simplicidad y el realismo de la obra, junto con el uso magistral de la luz, hacen que sea una de las pinturas más apreciadas del artista. Los objetos cotidianos se representan con gran atención al detalle, reflejando la belleza en lo ordinario.'),
+('La Ronda de Noche', 25, '1642-01-01', 'Óleo sobre lienzo', 'Rembrandt creó esta obra monumental que en realidad se titula "La Compañía Militar del Capitán Frans Banning Cocq". El apodo "La Ronda de Noche" se debe al oscurecimiento del barniz con el tiempo, que hizo creer que la escena ocurría de noche. La pintura es célebre por su dinamismo y el uso dramático del claroscuro.'),
+('La Danza', 27, '1910-01-01', 'Óleo sobre lienzo', 'Henri Matisse pintó "La Danza" como encargo para el coleccionista ruso Sergei Shchukin. La obra presenta figuras desnudas en un círculo de baile sobre un fondo simplificado, expresando alegría y energía primitiva. Considerada una pieza clave en el desarrollo del arte moderno, refleja la exploración del color y la forma por parte de Matisse.'),
+('El Carnaval del Arlequín', 5, '1924-01-01', 'Óleo sobre lienzo', 'Joan Miró creó esta obra surrealista que refleja un mundo onírico lleno de formas biomórficas y colores vibrantes. Se inspiró en un estado de hambre y alucinaciones, y la pintura ha sido interpretada como una representación del subconsciente. El arlequín es una figura recurrente en el trabajo de Miró, simbolizando el artista mismo.'),
+('La Fiesta de los Dioses', 28, '1514-01-01', 'Óleo sobre lienzo', 'Giovanni Bellini, con aportes posteriores de Tiziano, pintó esta obra que muestra una escena mitológica de los dioses romanos en un festín. Encargada por el duque de Ferrara, la pintura combina elementos del Renacimiento italiano con temas clásicos. Los detalles en los paisajes y las figuras reflejan la transición en el arte de la época.');
+
+
+
+INSERT INTO genero (nombre) VALUES
+('Femenino'),
+('Masculino'),
+('Sin Especificar');
+
+INSERT INTO carreraProfesional (nombre) VALUES
+('Ingeniería'),
+('Arquitectura'),
+('Diseño Gráfico');
+
+INSERT INTO productos (clave_producto, nombre, precio, descripcion, stock) VALUES
+('TZA-VG-001', 'Mousepad Las meninas',147.92, 'Velázquez inmortalizó magistralmente la vida familiar de Felipe IV en Las meninas (1656). Esta alfombrilla, sobre la que el ratón de tu ordenador se deslizará fácilmente, reproduce este retrato de grupo, una obra sobresaliente de la pintura occidental, imprescindible en las colecciones del Museo.', 100),
+('GOR-VG-001', 'Calcetines colección Bodegón', 327.53, 'Diseño exclusivo. Hecho en Portugal. 80% algodón peinado, 17% poliamida, 3% elastano. En estos originales calcetines se reproducen los detalles de las obras Frutero de Delft y dos floreros (1642), de Tomás Hiepes; y Bodegón de uvas, manzanas y ciruelas (hacia 1630), de Juan de Espinosa.', 50),
+('LEG-DV-001', 'Bola de navidad Paisaje Nevado', 211.30, '100% poliestireno reciclado. 7,5 cm de diámetro. Decora tu árbol de Navidad con esta original bola navideña, estampada con un diseño de la obra Paisaje nevado con patinadores y trampa para pájaros (h, 1601), de Pieter Brueghel, el Joven. Se trata de una de las copias del original pintado por Pieter Bruegel el Viejo en 1565 hechas por su hijo.', 20),
+('POS-DV-001', 'Cuaderno El pintor en su taller', 253.57, 'Papel liso. A5 (15 x 21 cm). 102 hojas (204 páginas). Este compacto cuaderno reproduce un detalle de la estampa El pintor en su taller (hacia 1667), editada y grabada por Adriaen van Ostade. Esta obra es de un gran valor cultural e histórico puesto que nos permite conocer cómo era el taller de un artista en el siglo XVII, cuyo objetivo es dar a conocer precisamente el ambiente donde el artista desarrollaba su obra. ', 200),
+('CAM-22-051,', 'El taller de Rubens', 501.86, 'Edición a cargo de Alejandro Vergara, jefe de Conservación del Área de Pintura flamenca y escuelas del Norte. Español (también disponible en inglés). Tapa dura, encuadernación holandesa. 22 x 27 cm. 168 páginas.', 200),
+('CAM-MU-001', 'Abanico La Virgen y el Niño en un cuadro rodeado de flores y frutas"', 316.96, 'Madera de peral pulida. 23 cm (varilla). Fabricado en España. Este bonito abanico reproduce un detalle de la obra La Virgen y el Niño en un cuadro rodeado de flores y frutas (1617-1620), resultante de la colaboración de Jan Brueghel el Viejo y Pedro Pablo Rubens. Su país queda decorado con parte de la exuberante guirnalda donde estos maestros demuestran una delicadeza exquisita en los detalles de cada elemento sobre la profundidad de un cielo de intenso color azul. ', 75);
+
+INSERT INTO usuarios (id, correo, nombre, contrasena,idGenero, id_carrera_profesional, direccion, telefono) VALUES
+(1, 'juan.perez@example.com', 'Juan', 'hashed_password_1', 1, 3,'Calle Falsa 123, Ciudad', '555-1234'),
+(2, 'maria.lopez@example.com', 'María', 'hashed_password_2', 1, 2,'Avenida Siempreviva 742, Ciudad', '555-5678'),
+(3, 'carlos.garcia@example.com', 'Carlos', 'hashed_password_3', 2, 1, 'Boulevard de los Sueños Rotos, Ciudad', '555-9012');
+
+INSERT INTO ventas (id,idUsuario, total, fecha) VALUES
+(5,1, 114.99, '2023-10-12 16:00:00'),
+(6,3, 225.00, '2023-10-13 13:20:00');
+
+INSERT INTO tarjetas (idUsuario, nombreTitular, apellidoTitular, numeroTarjeta, fechaExpiracion, tipoTarjeta, saldo) VALUES
+(1, 'Juan', 'Pérez', '1234-5678-9012-3456', '12/24', 'Visa', 5000.00),
+(2, 'María', 'López', '2345-6789-0123-4567', '11/23', 'MasterCard', 3000.50),
+(2, 'Carlos', 'García', '3456-7890-1234-5678', '10/25', 'Amex', 1200.75);
+
+INSERT INTO carritoProducto (idVentas, claveProducto, cantidad) VALUES
+(5, 'TZA-VG-001', 2),
+(6, 'GOR-VG-001', 1);
+
+INSERT INTO pinturaEstudiada (idPintura, idUsuario, fechaEstudio, observaciones) VALUES
+(1, 1, '2023-09-01 10:00:00', 'Estudio sobre técnicas de pinceladas'),
+(2, 2, '2023-09-02 11:30:00', 'Análisis de la composición');
+
+INSERT INTO tarjetas (idUsuario, nombreTitular, apellidoTitular, numeroTarjeta, fechaExpiracion, tipoTarjeta, saldo) VALUES
+(4, 'Prueba3', 'PéPrueba3', '1234-5678-9012-3456', '12/24', 'Visa', 13800.12);
